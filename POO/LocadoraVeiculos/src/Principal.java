@@ -1,3 +1,4 @@
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,6 +9,9 @@ import java.text.SimpleDateFormat;
 public class Principal {
 
     List<Funcionario> listaFuncionarios = new ArrayList<>();
+    List<Cliente> listaClientes = new ArrayList<>();
+    List<Automovel> listaAutomoveis = new ArrayList<>();
+    List<Modelo> listaModelos = new ArrayList<>();
 
     public static void main(String args[])
     {
@@ -36,20 +40,25 @@ public class Principal {
                 break;
 
             case 2:
+                menuCliente();
                 break;
 
             case 3:
+                menuAutomoveis();
                 break;
 
             case 0:
-            default:
                 System.exit(0);
                 break;
-
-
+            default:
+                System.out.println("Opção inválida, tente novamente!\n");
+                menuPrincipal();
+                break;
         }
 
     }
+
+    // Funcionario
 
     public void menuFuncionario()
     {
@@ -75,6 +84,7 @@ public class Principal {
                 break;
 
             case 3:
+                System.out.println("Função ainda em desenvolvimento");
                 break;
 
             case 4:
@@ -89,7 +99,8 @@ public class Principal {
                 menuPrincipal();
                 break;
             default:
-                System.exit(0);
+                System.out.println("Opção inválida, tente novamente!\n");
+                menuFuncionario();
                 break;
         }
 
@@ -152,9 +163,6 @@ public class Principal {
     {
         Scanner sc = new Scanner(System.in);
         String bscNome;
-        int posNome = 0;
-
-        Funcionario funcionario = new Funcionario();
 
         System.out.println("#Busca de Funcionários");
         System.out.println(">Informe o nome do Funcionario:");
@@ -170,7 +178,7 @@ public class Principal {
         System.out.println();
     }
 
-    public void removeFuncionario()
+    public void removeFuncionario() // NAO ESTA FUNCIONANDO ESSA MERDA
     {
         Scanner sc = new Scanner(System.in);
         String bscNome;
@@ -183,6 +191,249 @@ public class Principal {
         {
             if(f.nome.equals(bscNome)) {
                 listaFuncionarios.remove(f);
+            }
+        }
+        System.out.println();
+    }
+
+    // Cliente
+
+    public void menuCliente()
+    {
+
+        System.out.println("\t***Menu Cliente***");
+        System.out.println("01 - Listar");
+        System.out.println("02 - Cadastrar");
+        System.out.println("03 - Alterar");
+        System.out.println("04 - Buscar");
+        System.out.println("05 - Excluir");
+        System.out.println("00 - Voltar");
+
+        Scanner sc = new Scanner(System.in);
+        int op = sc.nextInt();
+
+        switch (op){
+            case 1:
+                listarCliente();
+                break;
+
+            case 2:
+                cadastrarCliente();
+                break;
+
+            case 3:
+                System.out.println("Função ainda em desenvolvimento");
+                break;
+
+            case 4:
+                buscaCliente();
+                break;
+
+            case 5:
+                removeCliente();
+                break;
+
+            case 0:
+                menuPrincipal();
+                break;
+            default:
+                System.out.println("Opção inválida, tente novamente!\n");
+                menuCliente();
+                break;
+        }
+
+        menuCliente();
+    }
+
+    public void cadastrarCliente()
+    {
+        Scanner sc = new Scanner(System.in);
+
+        Cliente cliente = new Cliente();
+
+        System.out.println("#Cadastro de Cliente");
+        System.out.println("> Informe o nome: ");
+        cliente.nome = sc.nextLine();
+
+        System.out.println("> Informe o CPF: ");
+        cliente.cpf = sc.nextLine();
+
+        System.out.println("> Informe o endereço: ");
+        cliente.endereco = sc.nextLine();
+
+        System.out.println("> Informe o telefone: ");
+        cliente.telefone = sc.nextLine();
+
+        try {
+            System.out.println("> Informe a data de nascimento: ");
+            String data = sc.nextLine();
+            Date dt = new SimpleDateFormat("dd/MM/yyyy").parse(data);
+            cliente.dt_nascimento = dt;
+        } catch (ParseException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("> Informe o código: ");
+        cliente.codigo = sc.nextLine();
+
+        listaClientes.add(cliente);
+    }
+
+    public void listarCliente()
+    {
+        System.out.println("#Lista de Clientes \n");
+        System.out.println("Código | " + "Nome | " + "CPF | ");
+        for(Cliente c: listaClientes)
+        {
+            System.out.println(c.codigo + " | " + c.nome + " | " + c.cpf + " | ");
+        }
+        System.out.println();
+    }
+
+    public void buscaCliente()
+    {
+        Scanner sc = new Scanner(System.in);
+        String bscNome;
+
+        System.out.println("#Busca de Cliente");
+        System.out.println(">Informe o nome:");
+        bscNome = sc.nextLine();
+
+        System.out.println("Código | " + "Nome | " + "CPF | " + "Endereco | " + "Telefone | " + "Data de Nascimento | ");
+        for(Cliente c: listaClientes)
+        {
+            if(c.nome.equals(bscNome)) {
+                System.out.println(c.codigo + " | " + c.nome + " | " + c.cpf + " | " + c.endereco + " | " + c.telefone + " | " + c.dt_nascimento + " | ");
+            }
+        }
+        System.out.println();
+    }
+
+    public void removeCliente() // NAO ESTA FUNCIONANDO ESSA MERDA
+    {
+        Scanner sc = new Scanner(System.in);
+        String bscNome;
+
+        System.out.println("#Exclusão de Cliente");
+        System.out.println(">Informe o nome do Cliente:");
+        bscNome = sc.nextLine();
+
+        for(Cliente c: listaClientes)
+        {
+            if(c.nome.equals(bscNome)) {
+                listaFuncionarios.remove(c);
+            }
+        }
+        System.out.println();
+    }
+
+    //Automovel - Nao Esta Funcionanado
+
+    public void menuAutomoveis()
+    {
+
+        System.out.println("\t***Menu Automovel***");
+        System.out.println("01 - Listar");
+        System.out.println("02 - Cadastrar");
+        System.out.println("03 - Alterar");
+        System.out.println("04 - Buscar");
+        System.out.println("05 - Excluir");
+        System.out.println("00 - Voltar");
+
+        Scanner sc = new Scanner(System.in);
+        int op = sc.nextInt();
+
+        switch (op){
+            case 1:
+                listarAutomovel();
+                break;
+
+            case 2:
+                cadastrarAutomovel();
+                break;
+
+            case 3:
+                System.out.println("Função ainda em desenvolvimento");
+                break;
+
+            case 4:
+                break;
+
+            case 5:
+                break;
+
+            case 0:
+                menuPrincipal();
+                break;
+            default:
+                System.out.println("Opção inválida, tente novamente!\n");
+                menuPrincipal();
+                break;
+        }
+
+        menuAutomoveis();
+    }
+
+    public void cadastrarAutomovel()
+    {
+        Scanner sc = new Scanner(System.in);
+
+        Automovel automovel = new Automovel();
+        Modelo modelo = new Modelo();
+
+        System.out.println("#Cadastro de Automovel");
+        System.out.println("> Informe o modelo: ");
+        automovel.nome = sc.nextLine();
+
+        System.out.println("> Informe a marca: ");
+        modelo.nome_marca = sc.nextLine();
+
+        System.out.println("> Informe o tipo (Carro ou Moto): ");
+        automovel.tipo = sc.nextLine();
+
+        try {
+            System.out.println("> Informe o ano de fabricação: ");
+            String data = sc.nextLine();
+            Date dt = new SimpleDateFormat("yyyy").parse(data);
+            automovel.ano_fab = dt;
+        } catch (ParseException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            System.out.println("> Informe o ano do modelo: ");
+            String data = sc.nextLine();
+            Date dt2 = new SimpleDateFormat("yyyy").parse(data);
+            automovel.ano_modelo = dt2;
+        } catch (ParseException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("> Informe a cor: ");
+        automovel.cor = sc.nextLine();
+
+        System.out.println("> Informe o chassi: ");
+        automovel.chassi = sc.nextLine();
+
+        System.out.println("> Informe a placa: ");
+        automovel.placa = sc.nextLine();
+
+        System.out.println("> Informe a quillometragem: ");
+        automovel.km = Float.parseFloat(sc.nextLine());
+
+        System.out.println("> Informe o valor: ");
+        automovel.valor = Float.parseFloat(sc.nextLine());
+
+        listaAutomoveis.add(automovel);
+        listaModelos.add(modelo);
+    }
+
+    void listarAutomovel()
+    {
+        System.out.println("Modelo | " + "Marca | " + "Tipo | " + "Ano de Modelo | " + "Ano de Fabricação | " + "Valor | ");
+        for(Automovel a: listaAutomoveis){
+            for(Modelo m: listaModelos){
+                System.out.println(a.nome + " | " + m.nome_marca + " | " + a.tipo + " | "  + a.ano_modelo + " | " + a.ano_fab + " | " + a.valor );
             }
         }
         System.out.println();

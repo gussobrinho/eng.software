@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class Automovel {
+public class Automovel extends Modelo {
 	
 	String cor;
 	String chassi;
@@ -9,6 +9,4 @@ public class Automovel {
 	float valor;
 	Date ano_fab;
 	Date ano_modelo;
-	
-
 }

@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77b84e8c-5515-4c12-a3a6-1bce857113eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Automovel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Cliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Funcionario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Marca.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Modelo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pessoa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Venda.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LocadoraVeiculos/Automovel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LocadoraVeiculos/Automovel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LocadoraVeiculos/Marca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LocadoraVeiculos/Marca.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LocadoraVeiculos/Modelo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LocadoraVeiculos/Modelo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LocadoraVeiculos/Principal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LocadoraVeiculos/Principal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Automovel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Automovel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Marca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Marca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Modelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Modelo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,14 +18,23 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="793" />
-    <option name="width" value="814" />
-    <option name="height" value="867" />
   </component>
   <component name="ProjectId" id="1Q3GrNRwc4uSvDRV5nMEZaQ9VTU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -36,6 +43,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566991238391" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../gustavo/gustavo/Aula03" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
@@ -84,7 +92,7 @@
       <workItem from="1566990569856" duration="105000" />
       <workItem from="1566990796777" duration="571000" />
       <workItem from="1566992101505" duration="190000" />
-      <workItem from="1566992375447" duration="1042000" />
+      <workItem from="1566992375447" duration="10398000" />
     </task>
     <servers />
   </component>
