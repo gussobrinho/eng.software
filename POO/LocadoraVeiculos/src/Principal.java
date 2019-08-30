@@ -1,8 +1,5 @@
 import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -178,7 +175,7 @@ public class Principal {
         System.out.println();
     }
 
-    public void removeFuncionario() // NAO ESTA FUNCIONANDO ESSA MERDA
+    public void removeFuncionario() // AGORA ESTA FUNCIONANDO ESSA MERDA
     {
         Scanner sc = new Scanner(System.in);
         String bscNome;
@@ -187,12 +184,18 @@ public class Principal {
         System.out.println(">Informe o nome do Funcionário:");
         bscNome = sc.nextLine();
 
+        List<Funcionario> removerFuncionarios = new ArrayList<>();
+
         for(Funcionario f: listaFuncionarios)
         {
+
             if(f.nome.equals(bscNome)) {
-                listaFuncionarios.remove(f);
+                removerFuncionarios.add(f);
             }
         }
+
+        listaFuncionarios.removeAll(removerFuncionarios);
+
         System.out.println();
     }
 
@@ -309,7 +312,7 @@ public class Principal {
         System.out.println();
     }
 
-    public void removeCliente() // NAO ESTA FUNCIONANDO ESSA MERDA
+    public void removeCliente() // AGORA ESTA FUNCIONANDO ESSA MERDA
     {
         Scanner sc = new Scanner(System.in);
         String bscNome;
@@ -318,12 +321,17 @@ public class Principal {
         System.out.println(">Informe o nome do Cliente:");
         bscNome = sc.nextLine();
 
+        List<Cliente> removerClientes = new ArrayList<>();
+
         for(Cliente c: listaClientes)
         {
             if(c.nome.equals(bscNome)) {
-                listaFuncionarios.remove(c);
+                removerClientes.add(c);
             }
         }
+
+        listaClientes.removeAll(removerClientes);
+
         System.out.println();
     }
 
@@ -436,6 +444,29 @@ public class Principal {
                 System.out.println(a.nome + " | " + m.nome_marca + " | " + a.tipo + " | "  + a.ano_modelo + " | " + a.ano_fab + " | " + a.valor );
             }
         }
+        System.out.println();
+    }
+
+    public void removeAutomoveis() // AGORA ESTA FUNCIONANDO ESSA MERDA
+    {
+        Scanner sc = new Scanner(System.in);
+        String bscNome;
+
+        System.out.println("#Exclusão de Automovel");
+        System.out.println(">Informe o nome do Automovel:");
+        bscNome = sc.nextLine();
+
+        List<Automovel> removerAutomoveis = new ArrayList<>();
+
+        for(Automovel a: listaAutomoveis)
+        {
+            if(a.nome.equals(bscNome)) {
+                removerAutomoveis.add(a);
+            }
+        }
+
+        listaAutomoveis.removeAll(removerAutomoveis);
+
         System.out.println();
     }
 }
