@@ -336,6 +336,7 @@ public class Principal {
     }
 
     //Automovel - Nao Esta Funcionanado
+    //Cadastro esta duplicando
 
     public void menuAutomoveis()
     {
@@ -368,6 +369,7 @@ public class Principal {
                 break;
 
             case 5:
+                removeAutomoveis();
                 break;
 
             case 0:
@@ -375,7 +377,7 @@ public class Principal {
                 break;
             default:
                 System.out.println("Opção inválida, tente novamente!\n");
-                menuPrincipal();
+                menuAutomoveis();
                 break;
         }
 
