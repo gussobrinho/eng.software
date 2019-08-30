@@ -8,7 +8,7 @@ public class Principal {
     List<Funcionario> listaFuncionarios = new ArrayList<>();
     List<Cliente> listaClientes = new ArrayList<>();
     List<Automovel> listaAutomoveis = new ArrayList<>();
-    List<Modelo> listaModelos = new ArrayList<>();
+    List<Marca> listaMarcas = new ArrayList<>();
 
     public static void main(String args[])
     {
@@ -336,7 +336,6 @@ public class Principal {
     }
 
     //Automovel - Nao Esta Funcionanado
-    //Cadastro esta duplicando
 
     public void menuAutomoveis()
     {
@@ -389,14 +388,14 @@ public class Principal {
         Scanner sc = new Scanner(System.in);
 
         Automovel automovel = new Automovel();
-        Modelo modelo = new Modelo();
+        Marca marca = new Marca();
 
         System.out.println("#Cadastro de Automovel");
         System.out.println("> Informe o modelo: ");
         automovel.nome = sc.nextLine();
 
         System.out.println("> Informe a marca: ");
-        modelo.nome_marca = sc.nextLine();
+         marca.nome = sc.nextLine();
 
         System.out.println("> Informe o tipo (Carro ou Moto): ");
         automovel.tipo = sc.nextLine();
@@ -435,18 +434,22 @@ public class Principal {
         automovel.valor = Float.parseFloat(sc.nextLine());
 
         listaAutomoveis.add(automovel);
-        listaModelos.add(modelo);
+        listaMarcas.add(marca);
     }
 
     void listarAutomovel()
     {
-        System.out.println("Modelo | " + "Marca | " + "Tipo | " + "Ano de Modelo | " + "Ano de Fabricação | " + "Valor | ");
+        System.out.println("#Lista de Automoveis");
+        System.out.println("Modelo | " + "Tipo | " + "Ano de Modelo | " + "Ano de Fabricação | " + "Valor | "+ "Placa | ");
         for(Automovel a: listaAutomoveis){
-            for(Modelo m: listaModelos){
-                System.out.println(a.nome + " | " + m.nome_marca + " | " + a.tipo + " | "  + a.ano_modelo + " | " + a.ano_fab + " | " + a.valor );
-            }
+            System.out.println(a.nome + " | " + a.tipo + " | "  + a.ano_modelo + " | " + a.ano_fab + " | " + a.valor + " | " + a.placa + " | ");
         }
         System.out.println();
+    }
+
+    // Nao implementado ainda
+    void buscarAutomovel(){
+
     }
 
     public void removeAutomoveis() // AGORA ESTA FUNCIONANDO ESSA MERDA

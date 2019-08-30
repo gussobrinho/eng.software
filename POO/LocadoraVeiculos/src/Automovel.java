@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class Automovel extends Modelo {
+public class Automovel extends Modelo{
 	
 	String cor;
 	String chassi;
