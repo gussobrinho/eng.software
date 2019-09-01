@@ -365,6 +365,7 @@ public class Principal {
                 break;
 
             case 4:
+                buscarAutomovel();
                 break;
 
             case 5:
@@ -412,8 +413,8 @@ public class Principal {
         try {
             System.out.println("> Informe o ano do modelo: ");
             String data = sc.nextLine();
-            Date dt2 = new SimpleDateFormat("yyyy").parse(data);
-            automovel.ano_modelo = dt2;
+            Date dt = new SimpleDateFormat("yyyy").parse(data);
+            automovel.ano_modelo = dt;
         } catch (ParseException e) {
             System.out.println(e.getMessage());
         }
@@ -440,9 +441,19 @@ public class Principal {
     void listarAutomovel()
     {
         System.out.println("#Lista de Automoveis");
-        System.out.println("Modelo | " + "Tipo | " + "Ano de Modelo | " + "Ano de Fabricação | " + "Valor | "+ "Placa | ");
+
         for(Automovel a: listaAutomoveis){
-            System.out.println(a.nome + " | " + a.tipo + " | "  + a.ano_modelo + " | " + a.ano_fab + " | " + a.valor + " | " + a.placa + " | ");
+            System.out.println("\n------------------------------");
+            System.out.println("Modelo: " + a.nome);
+            System.out.println("Marca: ");
+            System.out.println("Placa: " + a.placa);
+            System.out.println("Valor: R$" + a.valor);
+            System.out.println("Quilometragem: " + a.km + "KM");
+            System.out.println("Cor: " + a.cor);
+            System.out.println("Tipo: " + a.tipo);
+            System.out.println("Ano de Fabricação: " + a.ano_fab);
+            System.out.println("Ano do Modelo: " + a.ano_modelo);
+            System.out.println("------------------------------");
         }
         System.out.println();
     }
@@ -450,6 +461,35 @@ public class Principal {
     // Nao implementado ainda
     void buscarAutomovel(){
 
+        Scanner sc = new Scanner(System.in);
+        String bscNome;
+
+        int pos = 0;
+
+        System.out.println("#Busca de Automovel");
+        System.out.println(">Informe o modelo:");
+        bscNome = sc.nextLine();
+
+        System.out.println();
+        for(Automovel a: listaAutomoveis)
+        {
+            if(a.nome.equals(bscNome)) {
+                System.out.println("\n------------------------------");
+                System.out.println("Modelo: " + a.nome);
+                System.out.println("Marca: ");
+                System.out.println("Placa: " + a.placa);
+                System.out.println("Valor: R$" + a.valor);
+                System.out.println("Quilometragem: " + a.km + "KM");
+                System.out.println("Chassi: " + a.chassi);
+                System.out.println("Cor: " + a.cor);
+                System.out.println("Tipo: " + a.tipo);
+                System.out.println("Ano de Fabricação: " + a.ano_fab);
+                System.out.println("Ano do Modelo: " + a.ano_modelo);
+                System.out.println("------------------------------");
+            }
+        }
+
+        System.out.println();
     }
 
     public void removeAutomoveis() // AGORA ESTA FUNCIONANDO ESSA MERDA

@@ -1,5 +1,5 @@
 
-public class Modelo extends Marca {
+public class Modelo {
 	
 	String nome;
 	String tipo;
