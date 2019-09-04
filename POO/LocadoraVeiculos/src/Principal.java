@@ -446,7 +446,7 @@ public class Principal {
             System.out.println("Marca: " + a.nome_marca);
             System.out.println("Placa: " + a.placa);
             System.out.println("Valor: R$" + a.valor);
-            System.out.println("Quilometragem: " + a.km + "KM");
+            System.out.println("Quilometragem: " + a.km + " KM");
             System.out.println("Cor: " + a.cor);
             System.out.println("Tipo: " + a.tipo);
             System.out.println("Ano de Fabricação: " + a.ano_fab);
