@@ -1,5 +1,5 @@
 
 public class Marca {
 	
-	String nome;
+	String nome_marca;
 }

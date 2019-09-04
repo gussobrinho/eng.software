@@ -8,7 +8,6 @@ public class Principal {
     List<Funcionario> listaFuncionarios = new ArrayList<>();
     List<Cliente> listaClientes = new ArrayList<>();
     List<Automovel> listaAutomoveis = new ArrayList<>();
-    List<Marca> listaMarcas = new ArrayList<>();
 
     public static void main(String args[])
     {
@@ -396,7 +395,7 @@ public class Principal {
         automovel.nome = sc.nextLine();
 
         System.out.println("> Informe a marca: ");
-         marca.nome = sc.nextLine();
+        automovel.nome_marca = sc.nextLine();
 
         System.out.println("> Informe o tipo (Carro ou Moto): ");
         automovel.tipo = sc.nextLine();
@@ -435,7 +434,6 @@ public class Principal {
         automovel.valor = Float.parseFloat(sc.nextLine());
 
         listaAutomoveis.add(automovel);
-        listaMarcas.add(marca);
     }
 
     void listarAutomovel()
@@ -445,7 +443,7 @@ public class Principal {
         for(Automovel a: listaAutomoveis){
             System.out.println("\n------------------------------");
             System.out.println("Modelo: " + a.nome);
-            System.out.println("Marca: ");
+            System.out.println("Marca: " + a.nome_marca);
             System.out.println("Placa: " + a.placa);
             System.out.println("Valor: R$" + a.valor);
             System.out.println("Quilometragem: " + a.km + "KM");
@@ -476,7 +474,7 @@ public class Principal {
             if(a.nome.equals(bscNome)) {
                 System.out.println("\n------------------------------");
                 System.out.println("Modelo: " + a.nome);
-                System.out.println("Marca: ");
+                System.out.println("Marca: " + a.nome_marca);
                 System.out.println("Placa: " + a.placa);
                 System.out.println("Valor: R$" + a.valor);
                 System.out.println("Quilometragem: " + a.km + "KM");
