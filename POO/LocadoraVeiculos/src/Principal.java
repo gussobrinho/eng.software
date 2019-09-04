@@ -456,7 +456,6 @@ public class Principal {
         System.out.println();
     }
 
-    // Nao implementado ainda
     void buscarAutomovel(){
 
         Scanner sc = new Scanner(System.in);

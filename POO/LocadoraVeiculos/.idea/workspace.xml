@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77b84e8c-5515-4c12-a3a6-1bce857113eb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LocadoraVeiculos/Marca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LocadoraVeiculos/Marca.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LocadoraVeiculos/Modelo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LocadoraVeiculos/Modelo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LocadoraVeiculos/Principal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LocadoraVeiculos/Principal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal.java" afterDir="false" />
-    </list>
+    <list default="true" id="77b84e8c-5515-4c12-a3a6-1bce857113eb" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +89,7 @@
       <workItem from="1567366012907" duration="4158000" />
       <workItem from="1567433274312" duration="36000" />
       <workItem from="1567462577206" duration="674000" />
-      <workItem from="1567556036336" duration="2949000" />
+      <workItem from="1567556036336" duration="3736000" />
     </task>
     <servers />
   </component>
