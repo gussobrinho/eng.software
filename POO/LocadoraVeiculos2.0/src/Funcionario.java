@@ -1,6 +1,12 @@
 public class Funcionario extends Pessoa {
 
-    String codigo;
-    String usuario;
-    String senha;
+    private String codigo;
+    private String usuario;
+    private String senha;
+
+    Funcionario () {};
+
+    public void funcionarioCodigo (String codigo){
+        this.codigo = codigo;
+    }
 }

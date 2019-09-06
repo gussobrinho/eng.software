@@ -334,7 +334,7 @@ public class Principal {
         System.out.println();
     }
 
-    //Automovel - Nao Esta Funcionanado
+    //Automovel
 
     public void menuAutomoveis()
     {
