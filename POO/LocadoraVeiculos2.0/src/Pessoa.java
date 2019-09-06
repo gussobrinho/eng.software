@@ -1,6 +1,3 @@
-import sun.util.calendar.LocalGregorianCalendar;
-
-import java.text.DateFormat;
 import java.util.Date;
 
 public class Pessoa {
