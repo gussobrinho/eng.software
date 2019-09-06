@@ -1,2 +1,2 @@
-public class Automovel {
+public class Automovel extends Modelo {
 }
