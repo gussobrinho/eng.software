@@ -8,7 +8,7 @@ public class Pessoa {
     private String telefone;
     private Date dt_nascimento;
 
-    Pessoa (){};
+    Pessoa (){}
 
     public void pessoaNome(String nome_pessoa){
         this.nome_pessoa = nome_pessoa;
