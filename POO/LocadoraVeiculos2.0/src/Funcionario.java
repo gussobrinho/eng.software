@@ -1,8 +1,9 @@
-public class Funcionario extends Pessoa {
+public class Funcionario extends Pessoa implements IFuncionario{
 
     private String codigo;
     private String usuario;
     private String senha;
+    private float salario;
 
     Funcionario () {}
 
@@ -25,5 +26,10 @@ public class Funcionario extends Pessoa {
     }
     public String funcionarioGetSenha (){
         return senha;
+    }
+
+    @Override
+    public float calculaSalario() {
+        return salario * 15;
     }
 }

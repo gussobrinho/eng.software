@@ -7,9 +7,10 @@ import java.util.Scanner;
 public class Principal {
 
     ArrayList<Pessoa> pessoaList = new ArrayList<>();
+    ArrayList<Funcionario> funcionarioList = new ArrayList<>();
 
     public static void main(String args[]){
-        System.out.println("Garagem Tabajara!");
+        System.out.println("#!!# Garagem Tabajara #!!#");
 
         Principal principal = new Principal();
         principal.menuPrincipal();
@@ -76,8 +77,10 @@ public class Principal {
     public void cadastroFuncionario(){
 
         Scanner sc = new Scanner(System.in);
+        int tipoFunc = 0;
 
         Pessoa pessoa = new Pessoa();
+        Funcionario funcionario = new Funcionario();
 
         System.out.println("> Informe o nome: ");
         String nome = sc.nextLine();
@@ -102,6 +105,13 @@ public class Principal {
             pessoa.pessoaNascimento(dt);
         } catch (ParseException e) {
             System.out.println(e.getMessage());
+        }
+
+        System.out.println("Qual o tipo de Funcionario ? [0- Gerente, 1- Badeco, 2-Funcionario Comum");
+        sc.nextLine();
+
+        if(tipoFunc == 0){
+
         }
 
         pessoaList.add(pessoa);
