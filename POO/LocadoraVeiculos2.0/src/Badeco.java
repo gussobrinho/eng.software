@@ -3,20 +3,22 @@ public class Badeco extends Funcionario implements IFuncionario {
     private String funcao;
     private float salario;
 
-    Badeco () {}
-
-    public void badecoFuncao(String funcao){
-        this.funcao = funcao;
-    }
-    public String gerenteSetFuncao(){
+    public String getFuncao() {
         return funcao;
     }
 
-    public void badecoSalario(Float salario){
-        this.salario = salario;
+    public void setFuncao(String funcao) {
+        this.funcao = funcao;
     }
-    public Float badecoSetSalario(){
+
+    @Override
+    public float getSalario() {
         return salario;
+    }
+
+    @Override
+    public void setSalario(float salario) {
+        this.salario = salario;
     }
 
     public float calculaSalario() {

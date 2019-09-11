@@ -1,38 +1,42 @@
 public class Funcionario extends Pessoa implements IFuncionario{
 
-    private String codigo;
+    private int codigo;
     private String usuario;
     private String senha;
     private float salario;
 
-    Funcionario () {}
+    Funcionario (){}
 
-    public void funcionarioCodigo (String codigo){
-        this.codigo = codigo;
-    }
-    public String funcionarioGetCodigo (){
+    public int getCodigo() {
         return codigo;
     }
 
-    public void funcionarioUser (String user){
-        this.usuario = user;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
-    public String funcionarioGetUser (){
+
+    public String getUsuario() {
         return usuario;
     }
 
-    public void funcionarioSenha (String senha){
-        this.senha = senha;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
-    public String funcionarioGetSenha (){
+
+    public String getSenha() {
         return senha;
     }
 
-    public void funcionarioSalario (Float salario){
-        this.salario = salario;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
-    public float funcionarioGetSalario(){
+
+    public float getSalario() {
         return salario;
+    }
+
+    public void setSalario(float salario) {
+        this.salario = salario;
     }
 
     public float calculaSalario() {

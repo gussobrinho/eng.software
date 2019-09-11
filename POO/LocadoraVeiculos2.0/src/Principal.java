@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Principal {
 
-    ArrayList<Pessoa> pessoaList = new ArrayList<>();
+    ArrayList<Funcionario> funcionarioList = new ArrayList<>();
 
     public static void main(String args[]){
         System.out.println("#!!# Garagem Tabajara #!!#");
@@ -78,55 +78,88 @@ public class Principal {
         Scanner sc = new Scanner(System.in);
         int tipoFunc = 0;
 
-        Pessoa pessoa = new Pessoa();
         Funcionario funcionario = new Funcionario();
-        Funcionario badeco = new Badeco();
-        Funcionario gerente = new Gerente();
-
-        System.out.println("> Informe o nome: ");
-        String nome = sc.nextLine();
-        pessoa.pessoaNome(nome);
-
-        System.out.println("> Informe o CPF: ");
-        String cpf = sc.nextLine();
-        pessoa.pessoaCpf(cpf);
-
-        System.out.println("> Informe o endereco: ");
-        String endereco = sc.nextLine();
-        pessoa.pessoaEndereco(endereco);
-
-        System.out.println("> Informe o telefone");
-        String telefone = sc.nextLine();
-        pessoa.pessoaTelefone(telefone);
-
-        try {
-            System.out.println("> Informe a data de nascimento: ");
-            String data = sc.nextLine();
-            Date dt = new SimpleDateFormat("dd/MM/yyyy").parse(data);
-            pessoa.pessoaNascimento(dt);
-        } catch (ParseException e) {
-            System.out.println(e.getMessage());
-        }
 
         System.out.println("Qual o tipo de Funcionario ? [0- Gerente, 1- Badeco, 2-Funcionario Comum");
-        sc.nextLine();
+        sc.nextInt();
 
-        if(tipoFunc == 0){
+        if(tipoFunc != 0 || tipoFunc != 1 || tipoFunc != 2){
+            System.out.println("O tipo informado e invalido ou nao existe! Tente novamente.");
+            cadastroFuncionario();
+        }else{
+            System.out.println("> Informe o nome: ");
+            funcionario.setNome(sc.nextLine());
 
+            System.out.println("> Informe o CPF: ");
+            funcionario.setNome(sc.nextLine());
+
+            System.out.println("> Informe o endereco: ");
+            funcionario.setNome(sc.nextLine());
+
+            System.out.println("> Informe o telefone: ");
+            funcionario.setNome(sc.nextLine());
+
+            try {
+                System.out.println("> Informe a data de nascimento: ");
+                String data = sc.nextLine();
+                Date dt = new SimpleDateFormat("dd/MM /yyyy").parse(data);
+                funcionario.setDt_nascimento(dt);
+            } catch (ParseException e) {
+                System.out.println(e.getMessage());
+            }
+
+            System.out.println("> Informe o codigo: ");
+            funcionario.setCodigo(sc.nextInt());
+
+            System.out.println("> Informe o usuario: ");
+            funcionario.setUsuario(sc.nextLine());
+
+            System.out.println("> Informe a senha: ");
+            funcionario.setSenha(sc.nextLine());
+
+            if(tipoFunc == 0){
+                Gerente gerente = new Gerente();
+
+                System.out.println("> Informe a matricula: ");
+                gerente.setMatricula(sc.nextLine());
+
+                System.out.println("> Informe o departamento: ");
+                gerente.setDepartamento(sc.nextLine());
+
+                System.out.println("> Informe o salario: ");
+                gerente.setSalario(sc.nextFloat());
+
+                funcionario = gerente;
+            }else if(tipoFunc == 1){
+                Badeco badeco = new Badeco();
+
+                System.out.println("> Informe a funcao: ");
+                badeco.setFuncao(sc.nextLine());
+
+                System.out.println("> Informe o salario: ");
+                badeco.setSalario(sc.nextFloat());
+
+                funcionario = badeco;
+            }else {
+                System.out.println("> Informe o salario: ");
+                funcionario.setSalario(sc.nextFloat());
+            }
+
+            funcionarioList.add(funcionario);
         }
-
-        pessoaList.add(pessoa);
     }
 
     public void listarFuncionario(){
 
+        System.out.println("Informe o tipo de funcionario que deseja ser listado: ");
+
         System.out.println("\n#-----------------------------------------------#");
-        for(Pessoa p: pessoaList){
-            System.out.println("| Nome: " + p.pessoaGetNome());
-            System.out.println("| CPF: " + p.pessoaGetCpf());
-            System.out.println("| Endereco: " + p.pessoaGetEndereco());
-            System.out.println("| Telefone: " + p.pessoaGetTelefone());
-            System.out.println("| Data de Nascimento: " + p.pessoaGetNascimento());
+        for(Funcionario f: funcionarioList){
+            System.out.println("| Nome: ");
+            System.out.println("| CPF: ");
+            System.out.println("| Endereco: ");
+            System.out.println("| Telefone: ");
+            System.out.println("| Data de Nascimento: ");
         }
         System.out.println("#-----------------------------------------------#\n");
     }

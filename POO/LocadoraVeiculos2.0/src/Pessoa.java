@@ -2,44 +2,49 @@ import java.util.Date;
 
 public class Pessoa {
 
-    private String nome_pessoa;
+    private String nome;
     private String cpf;
     private String endereco;
     private String telefone;
     private Date dt_nascimento;
 
-    Pessoa (){}
-
-    public void pessoaNome(String nome_pessoa){
-        this.nome_pessoa = nome_pessoa;
-    }
-    public String pessoaGetNome(){
-        return nome_pessoa;
+    public String getNome() {
+        return nome;
     }
 
-    public void pessoaCpf(String cpf){
-        this.cpf = cpf;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
-    public String pessoaGetCpf(){
+
+    public String getCpf() {
         return cpf;
     }
 
-    public void pessoaEndereco(String endereco){
-        this.endereco = endereco;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
-    public String pessoaGetEndereco(){
+
+    public String getEndereco() {
         return endereco;
     }
 
-    public void pessoaTelefone(String telefone){
-        this.telefone = telefone;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
-    public String pessoaGetTelefone(){
+
+    public String getTelefone() {
         return telefone;
     }
 
-    public void pessoaNascimento(Date dt_nascimento){
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public Date getDt_nascimento() {
+        return dt_nascimento;
+    }
+
+    public void setDt_nascimento(Date dt_nascimento) {
         this.dt_nascimento = dt_nascimento;
     }
-    public String pessoaGetNascimento(){ return "Hello, To com a data de nascimento aqui"; };
 }
