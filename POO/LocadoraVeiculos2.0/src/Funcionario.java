@@ -28,7 +28,13 @@ public class Funcionario extends Pessoa implements IFuncionario{
         return senha;
     }
 
-    @Override
+    public void funcionarioSalario (Float salario){
+        this.salario = salario;
+    }
+    public float funcionarioGetSalario(){
+        return salario;
+    }
+
     public float calculaSalario() {
         return salario * 1.0f;
     }
