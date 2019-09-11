@@ -30,6 +30,6 @@ public class Funcionario extends Pessoa implements IFuncionario{
 
     @Override
     public float calculaSalario() {
-        return salario * 15;
+        return salario * 1.0f;
     }
 }

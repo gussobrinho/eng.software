@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class Principal {
 
     ArrayList<Pessoa> pessoaList = new ArrayList<>();
-    ArrayList<Funcionario> funcionarioList = new ArrayList<>();
 
     public static void main(String args[]){
         System.out.println("#!!# Garagem Tabajara #!!#");
@@ -81,6 +80,8 @@ public class Principal {
 
         Pessoa pessoa = new Pessoa();
         Funcionario funcionario = new Funcionario();
+        Funcionario badeco = new Badeco();
+        Funcionario gerente = new Gerente();
 
         System.out.println("> Informe o nome: ");
         String nome = sc.nextLine();
