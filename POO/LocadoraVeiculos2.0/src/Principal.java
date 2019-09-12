@@ -76,7 +76,6 @@ public class Principal {
     public void cadastroFuncionario(){
 
         Scanner sc = new Scanner(System.in);
-        Scanner sc2 = new Scanner(System.in);
         int tipoFunc = 0;
 
         Funcionario funcionario = new Funcionario();
