@@ -35,7 +35,4 @@ public class Gerente extends Funcionario implements IFuncionario {
     public float calculaSalario() {
         return salario * 1.5f;
     }
-
-    public void mapFuncionarioToGerente(){
-    }
 }
