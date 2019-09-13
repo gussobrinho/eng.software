@@ -76,13 +76,13 @@ public class Principal {
     public void cadastroFuncionario(){
 
         Scanner sc = new Scanner(System.in);
+        Scanner sci = new Scanner(System.in);
         int tipoFunc = 0;
 
         Funcionario funcionario = new Funcionario();
 
         System.out.println("Qual o tipo de Funcionario ? [1- Gerente, 2- Badeco, 3-Funcionario Comum");
-        tipoFunc = sc.nextInt();
-        sc.nextLine();
+        tipoFunc = sci.nextInt();
 
         if(tipoFunc != 1 && tipoFunc != 2 && tipoFunc != 3){
             System.out.println("O tipo informado e invalido ou nao existe! Tente novamente.");
@@ -92,13 +92,13 @@ public class Principal {
             funcionario.setNome(sc.nextLine());
 
             System.out.println("> Informe o CPF: ");
-            funcionario.setNome(sc.nextLine());
+            funcionario.setCpf(sc.nextLine());
 
             System.out.println("> Informe o endereco: ");
-            funcionario.setNome(sc.nextLine());
+            funcionario.setEndereco(sc.nextLine());
 
             System.out.println("> Informe o telefone: ");
-            funcionario.setNome(sc.nextLine());
+            funcionario.setTelefone(sc.nextLine());
 
             try {
                 System.out.println("> Informe a data de nascimento: ");
@@ -110,8 +110,7 @@ public class Principal {
             }
 
             System.out.println("> Informe o codigo: ");
-            funcionario.setCodigo(sc.nextInt());
-            sc.nextLine();
+            funcionario.setCodigo(sci.nextInt());
 
             System.out.println("> Informe o usuario: ");
             funcionario.setUsuario(sc.nextLine());
@@ -122,6 +121,8 @@ public class Principal {
             if(tipoFunc == 1){
                 Gerente gerente = new Gerente();
 
+                gerente.mapFuncionarioToGerente(funcionario);
+
                 System.out.println("> Informe a matricula: ");
                 gerente.setMatricula(sc.nextLine());
 
@@ -129,22 +130,24 @@ public class Principal {
                 gerente.setDepartamento(sc.nextLine());
 
                 System.out.println("> Informe o salario: ");
-                gerente.setSalario(sc.nextFloat());
+                gerente.setSalario(sci.nextFloat());
 
                 funcionario = gerente;
             }else if(tipoFunc == 2){
                 Badeco badeco = new Badeco();
 
+                badeco.mapFuncionarioToBadeco(funcionario);
+
                 System.out.println("> Informe a funcao: ");
                 badeco.setFuncao(sc.nextLine());
 
                 System.out.println("> Informe o salario: ");
-                badeco.setSalario(sc.nextFloat());
+                badeco.setSalario(sci.nextFloat());
 
                 funcionario = badeco;
             }else {
                 System.out.println("> Informe o salario: ");
-                funcionario.setSalario(sc.nextFloat());
+                funcionario.setSalario(sci.nextFloat());
             }
 
             funcionarioList.add(funcionario);
@@ -165,6 +168,7 @@ public class Principal {
             System.out.println("| Codigo: " + f.getCodigo());
             System.out.println("| Usuario: " + f.getUsuario());
             System.out.println("| Senha: " + f.getSenha());
+            System.out.println("| Salario: " + f.calculaSalario());
             System.out.println("#-----------------------------------------------#");
         }
     }
