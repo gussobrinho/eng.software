@@ -2,6 +2,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class Principal {
@@ -61,6 +62,12 @@ public class Principal {
             case 2:
                 listarFuncionario();
                 break;
+            case 3:
+                buscarFuncionario();
+                break;
+            case 5:
+                removeFuncionario();
+                break;
             case 0:
                 menuPrincipal();
                 break;
@@ -81,7 +88,7 @@ public class Principal {
 
         Funcionario funcionario = new Funcionario();
 
-        System.out.println("Qual o tipo de Funcionario ? [1- Gerente, 2- Badeco, 3-Funcionario Comum");
+        System.out.println("Qual o tipo de Funcionario ? [1- Gerente, 2- Badeco, 3-Funcionario Comum]");
         tipoFunc = sci.nextInt();
 
         if(tipoFunc != 1 && tipoFunc != 2 && tipoFunc != 3){
@@ -156,20 +163,55 @@ public class Principal {
 
     public void listarFuncionario(){
 
-        System.out.println("Informe o tipo de funcionario que deseja ser listado: ");
-
         for(Funcionario f: funcionarioList){
+
             System.out.println("\n#-----------------------------------------------#");
             System.out.println("| Nome: " + f.getNome());
-            System.out.println("| CPF: " + f.getCpf());
-            System.out.println("| Endereco: " + f.getEndereco());
             System.out.println("| Telefone: " + f.getTelefone());
-            System.out.println("| Data de Nascimento: " + f.getDt_nascimento());
             System.out.println("| Codigo: " + f.getCodigo());
-            System.out.println("| Usuario: " + f.getUsuario());
-            System.out.println("| Senha: " + f.getSenha());
-            System.out.println("| Salario: " + f.calculaSalario());
             System.out.println("#-----------------------------------------------#");
         }
+    }
+
+    public void buscarFuncionario(){
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("#Busca de Funcionários");
+        System.out.println(">Informe o codigo do funcionario:");
+        int codFunc = sc.nextInt();
+
+        for(Funcionario f: funcionarioList){
+            if (f.getCodigo() == codFunc){
+                System.out.println("| Nome: " + f.getNome());
+                System.out.println("| CPF: " + f.getCpf());
+                System.out.println("| Endereco: " + f.getEndereco());
+                System.out.println("| Telefone: " + f.getTelefone());
+                System.out.println("| Data de Nascimento: " + f.getDt_nascimento());
+                System.out.println("| Codigo: " + f.getCodigo());
+                System.out.println("| Usuario: " + f.getUsuario());
+                System.out.println("| Senha: " + f.getSenha());
+                System.out.println("| Salario: " + f.calculaSalario());
+            }
+        }
+
+    }
+
+    public void removeFuncionario(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("# Exclusão de Funcionarios");
+        System.out.println("> Informe o codigo do funcionário:");
+        int codFunc = sc.nextInt();
+
+        List<Funcionario> removeFuncionario = new ArrayList<>();
+
+        for(Funcionario f: funcionarioList){
+            if(f.getCodigo() == codFunc){
+                removeFuncionario.add(f);
+            }
+        }
+
+        funcionarioList.removeAll(removeFuncionario);
     }
 }
