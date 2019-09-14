@@ -41,6 +41,9 @@ public class Principal {
             case 3:
                 menuAutomovel();
                 break;
+            case 4:
+                menuVendas();
+                break;
             case 0:
                 System.exit(0);
                 break;
@@ -509,5 +512,38 @@ public class Principal {
         }
 
         automovelList.removeAll(removeAutomovel);
+    }
+
+    public void menuVendas(){
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("#!# Menu de Vendas #!#");
+        System.out.println("1 - Realizar vendas");
+        System.out.println("2 - Listar");
+        System.out.println("3 - Buscar");
+        System.out.println("5 - Excluir");
+        System.out.println("0 - Voltar");
+        System.out.println("Digite sua opção: ");
+        int op = sc.nextInt();
+
+        switch (op){
+            case 1:
+                menuFuncionario();
+                break;
+            case 2:
+                menuCliente();
+                break;
+            case 3:
+                menuAutomovel();
+                break;
+            case 0:
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Opcao invalida, tente novamente!");
+                menuPrincipal();
+                break;
+        }
     }
 }
