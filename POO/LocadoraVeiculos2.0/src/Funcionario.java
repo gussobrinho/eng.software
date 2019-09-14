@@ -5,8 +5,6 @@ public class Funcionario extends Pessoa implements IFuncionario{
     private String senha;
     private float salario;
 
-    Funcionario (){}
-
     public int getCodigo() {
         return codigo;
     }
