@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Principal {
 
     ArrayList<Funcionario> funcionarioList = new ArrayList<>();
+    ArrayList<Cliente> clienteList = new ArrayList<>();
 
     public static void main(String args[]){
         System.out.println("#!!# Garagem Tabajara #!!#");
@@ -32,6 +33,9 @@ public class Principal {
             case 1:
                 menuFuncionario();
                 break;
+            case 2:
+                menuCliente();
+                break;
             case 0:
                 System.exit(0);
                 break;
@@ -46,6 +50,7 @@ public class Principal {
 
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("## Menu Funcionario ##");
         System.out.println("1 - Cadastrar");
         System.out.println("2 - Listar");
         System.out.println("3 - Buscar");
@@ -64,6 +69,9 @@ public class Principal {
                 break;
             case 3:
                 buscarFuncionario();
+                break;
+            case 4:
+                System.out.println("Funcao em desenvolvimento!");
                 break;
             case 5:
                 removeFuncionario();
@@ -88,6 +96,7 @@ public class Principal {
 
         Funcionario funcionario = new Funcionario();
 
+        System.out.println("#!# Cadastro de Funcionario #!#");
         System.out.println("Qual o tipo de Funcionario ? [1- Gerente, 2- Badeco, 3-Funcionario Comum]");
         tipoFunc = sci.nextInt();
 
@@ -163,8 +172,8 @@ public class Principal {
 
     public void listarFuncionario(){
 
+        System.out.println("#!# Lista de Funcionarios #!#");
         for(Funcionario f: funcionarioList){
-
             System.out.println("\n#-----------------------------------------------#");
             System.out.println("| Nome: " + f.getNome());
             System.out.println("| Telefone: " + f.getTelefone());
@@ -177,7 +186,7 @@ public class Principal {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("#Busca de Funcionários");
+        System.out.println("# Busca de Funcionários");
         System.out.println(">Informe o codigo do funcionario:");
         int codFunc = sc.nextInt();
 
@@ -213,5 +222,122 @@ public class Principal {
         }
 
         funcionarioList.removeAll(removeFuncionario);
+    }
+
+    public void menuCliente() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("## Menu Cliente ##");
+        System.out.println("1 - Cadastrar");
+        System.out.println("2 - Listar");
+        System.out.println("3 - Buscar");
+        System.out.println("4 - Alterar");
+        System.out.println("5 - Excluir");
+        System.out.println("0 - Voltar");
+        System.out.println("Digite sua opção: ");
+        int op = sc.nextInt();
+
+        switch(op){
+            case 1:
+                cadastrarCliente();
+                break;
+            case 2:
+                listarCliente();
+                break;
+            case 3:
+                buscarCliente();
+                break;
+            case 5:
+                removeCliente();
+                break;
+            default:
+                System.out.println("Opcao invalida, tente novamente!");
+                menuCliente();
+                break;
+        }
+    }
+
+    public void cadastrarCliente(){
+        Cliente cliente = new Cliente();
+
+        Scanner sc = new Scanner(System.in);
+        Scanner sci = new Scanner(System.in);
+
+        System.out.println("> Informe o nome: ");
+        cliente.setNome(sc.nextLine());
+
+        System.out.println("> Informe o CPF: ");
+        cliente.setCpf(sc.nextLine());
+
+        System.out.println("> Informe o endereco: ");
+        cliente.setEndereco(sc.nextLine());
+
+        System.out.println("> Informe o telefone: ");
+        cliente.setTelefone(sc.nextLine());
+
+        try {
+            System.out.println("> Informe a data de nascimento: ");
+            String data = sc.nextLine();
+            Date dt = new SimpleDateFormat("dd/MM/yyyy").parse(data);
+            cliente.setDt_nascimento(dt);
+        } catch (ParseException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("> Informe o codigo:");
+        cliente.setCodigo(sci.nextInt());
+
+        clienteList.add(cliente);
+    }
+
+    public void listarCliente(){
+        System.out.println("#!# Lista de Clientes #!#");
+        for(Cliente c: clienteList){
+            System.out.println("\n#-----------------------------------------------#");
+            System.out.println("| Nome: " + c.getNome());
+            System.out.println("| Telefone: " + c.getTelefone());
+            System.out.println("| Codigo: " + c.getCodigo());
+            System.out.println("| Endereco: " + c.getEndereco());
+            System.out.println("#-----------------------------------------------#");
+        }
+    }
+
+    public void buscarCliente(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("#!# Busca de Funcionario #!#");
+        System.out.println("> Informe o nome do cliente: ");
+        String bscCliente = sc.nextLine();
+
+        System.out.println("\n#-----------------------------------------------#");
+        for(Cliente c: clienteList){
+            if(c.getNome().equals(bscCliente)){
+                System.out.println("| Nome: " + c.getNome());
+                System.out.println("| CPF: " + c.getCpf());
+                System.out.println("| Endereco: " + c.getEndereco());
+                System.out.println("| Telefone: " + c.getTelefone());
+                System.out.println("| Data de Nascimento: " + c.getDt_nascimento());
+                System.out.println("| Codigo: " + c.getCodigo());
+            }
+        }
+        System.out.println("\n#-----------------------------------------------#");
+    }
+
+    public void removeCliente(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("# Exclusão de Funcionarios");
+        System.out.println("> Informe o codigo do funcionário:");
+        int codFunc = sc.nextInt();
+
+        List<Cliente> removeCliente = new ArrayList<>();
+
+        for(Cliente c: clienteList){
+            if(c.getCodigo() == codFunc){
+                removeCliente.add(c);
+            }
+        }
+
+        clienteList.removeAll(removeCliente);
     }
 }

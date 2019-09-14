@@ -1,13 +1,12 @@
 public class Cliente extends Pessoa {
 
-    private String codigo;
+    private int codigo;
 
-    Cliente () {}
-
-    public void clienteCodigo (String codigo){
-        this.codigo = codigo;
-    }
-    public String clienteGetCodigo (){
+    public int getCodigo() {
         return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 }
