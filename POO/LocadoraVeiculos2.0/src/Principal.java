@@ -11,6 +11,7 @@ public class Principal {
     ArrayList<Funcionario> funcionarioList = new ArrayList<>();
     ArrayList<Cliente> clienteList = new ArrayList<>();
     ArrayList<Automovel> automovelList = new ArrayList<>();
+    ArrayList<Venda> vendaList = new ArrayList<>();
 
     public static void main(String args[]){
         System.out.println("#!!# Garagem Tabajara #!!#");
@@ -23,6 +24,7 @@ public class Principal {
 
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("#!# Menu Principal #!#");
         System.out.println("1 - Funcionario");
         System.out.println("2 - Cliente");
         System.out.println("3 - Automovel");
@@ -239,7 +241,7 @@ public class Principal {
     public void menuCliente() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("## Menu Cliente ##");
+        System.out.println("#!# Menu Cliente #!#");
         System.out.println("1 - Cadastrar");
         System.out.println("2 - Listar");
         System.out.println("3 - Buscar");
@@ -261,6 +263,9 @@ public class Principal {
                 break;
             case 5:
                 removeCliente();
+                break;
+            case 0:
+                menuPrincipal();
                 break;
             default:
                 System.out.println("Opcao invalida, tente novamente!");
@@ -364,7 +369,7 @@ public class Principal {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("## Menu Automovel ##");
+        System.out.println("#!# Menu Automovel #!#");
         System.out.println("1 - Cadastrar");
         System.out.println("2 - Listar");
         System.out.println("3 - Buscar");
@@ -529,21 +534,43 @@ public class Principal {
 
         switch (op){
             case 1:
-                menuFuncionario();
-                break;
-            case 2:
-                menuCliente();
-                break;
-            case 3:
-                menuAutomovel();
+                realizarVenda();
                 break;
             case 0:
-                System.exit(0);
+                menuPrincipal();
                 break;
             default:
                 System.out.println("Opcao invalida, tente novamente!");
                 menuPrincipal();
                 break;
         }
+
+        menuVendas();
+    }
+
+    public void realizarVenda(){
+        Venda venda = new Venda();
+
+        boolean ac = false;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("> Informe a placa do automovel: ");
+        String bscPlaca = sc.nextLine();
+
+        for(Automovel au: automovelList){
+            if(bscPlaca.equals(au.getPlaca())){
+                ac = true;
+                break;
+            }
+        }
+
+        if(ac == true){
+            System.out.println("Achei!");
+        }else{
+            System.out.println("Tente Novamente!");
+            menuVendas();
+        }
+
+        vendaList.add(venda);
     }
 }
