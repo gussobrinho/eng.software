@@ -57,7 +57,7 @@ public class Principal {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("## Menu Funcionario ##");
+        System.out.println("#!# Menu Funcionario #!#");
         System.out.println("1 - Cadastrar");
         System.out.println("2 - Listar");
         System.out.println("3 - Buscar");
@@ -521,10 +521,9 @@ public class Principal {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("#!# Menu de Vendas #!#");
-        System.out.println("1 - Realizar vendas");
-        System.out.println("2 - Listar");
-        System.out.println("3 - Buscar");
-        System.out.println("5 - Excluir");
+        System.out.println("1 - Realizar venda");
+        System.out.println("2 - Listar vendas");
+        System.out.println("5 - Cancelar venda");
         System.out.println("0 - Voltar");
         System.out.println("Digite sua opção: ");
         int op = sc.nextInt();
@@ -586,7 +585,24 @@ public class Principal {
                             }
 
                             if(achou3 == true){
-                                finalizarVenda();
+                                System.out.println("> Possui desconto sobre o valor do veiculo? (1- Sim 0- Nao)");
+                                int resposta = sc.nextInt();
+
+                                if(resposta == 1){
+                                    System.out.println("> Informe o valor do desconto: ");
+                                    float desconto = sc.nextFloat();
+
+                                    venda.setValor_venda(au.getValor() - desconto);
+
+                                    System.out.println("-> Valor do veiculo vendido: " + au.getValor());
+                                    System.out.println("-> Valor do desconto: " + venda.getValor_venda());
+                                    venda.setComissao_venda(venda.getValor_venda()*0.05f);
+                                    System.out.println("-> Valor da comissao: " + venda.getComissao_venda());
+                                }else{
+                                    System.out.println("-> Valor do veiculo vendido: " + au.getValor());
+                                    venda.setComissao_venda(au.getValor()*0.05f);
+                                    System.out.println("-> Valor da comissao: " + venda.getComissao_venda());
+                                }
                             }
                         }
                         break;
@@ -601,9 +617,5 @@ public class Principal {
         }
 
         vendaList.add(venda);
-    }
-
-    public void finalizarVenda(){
-        System.out.println("Vamos finalizar a venda!");
     }
 }
