@@ -226,36 +226,37 @@ public class Principal {
         int codFunc = sci.nextInt();
 
         for(Funcionario funcionario: funcionarioList){
+            if(codFunc == funcionario.getCodigo()) {
+                System.out.println("> Informe o nome: ");
+                funcionario.setNome(sc.nextLine());
 
-            System.out.println("> Informe o nome: ");
-            funcionario.setNome(sc.nextLine());
+                System.out.println("> Informe o CPF: ");
+                funcionario.setCpf(sc.nextLine());
 
-            System.out.println("> Informe o CPF: ");
-            funcionario.setCpf(sc.nextLine());
+                System.out.println("> Informe o endereco: ");
+                funcionario.setEndereco(sc.nextLine());
 
-            System.out.println("> Informe o endereco: ");
-            funcionario.setEndereco(sc.nextLine());
+                System.out.println("> Informe o telefone: ");
+                funcionario.setTelefone(sc.nextLine());
 
-            System.out.println("> Informe o telefone: ");
-            funcionario.setTelefone(sc.nextLine());
+                try {
+                    System.out.println("> Informe a data de nascimento: ");
+                    String data = sc.nextLine();
+                    Date dt = new SimpleDateFormat("dd/MM/yyyy").parse(data);
+                    funcionario.setDt_nascimento(dt);
+                } catch (ParseException e) {
+                    System.out.println(e.getMessage());
+                }
 
-            try {
-                System.out.println("> Informe a data de nascimento: ");
-                String data = sc.nextLine();
-                Date dt = new SimpleDateFormat("dd/MM/yyyy").parse(data);
-                funcionario.setDt_nascimento(dt);
-            } catch (ParseException e) {
-                System.out.println(e.getMessage());
+                System.out.println("> Informe o codigo: ");
+                funcionario.setCodigo(sci.nextInt());
+
+                System.out.println("> Informe o usuario: ");
+                funcionario.setUsuario(sc.nextLine());
+
+                System.out.println("> Informe a senha: ");
+                funcionario.setSenha(sc.nextLine());
             }
-
-            System.out.println("> Informe o codigo: ");
-            funcionario.setCodigo(sci.nextInt());
-
-            System.out.println("> Informe o usuario: ");
-            funcionario.setUsuario(sc.nextLine());
-
-            System.out.println("> Informe a senha: ");
-            funcionario.setSenha(sc.nextLine());
         }
     }
 
@@ -387,7 +388,40 @@ public class Principal {
     }
 
     public void alterarCliente(){
+        Scanner sc = new Scanner(System.in);
+        Scanner sci = new Scanner(System.in);
+
         System.out.println("# Alteracao de cliente");
+
+        System.out.println(">Informe o codigo do cliente:");
+        int codCliente = sc.nextInt();
+        for(Cliente cliente: clienteList){
+            if(codCliente == cliente.getCodigo()){
+                System.out.println("> Informe o nome: ");
+                cliente.setNome(sc.nextLine());
+
+                System.out.println("> Informe o CPF: ");
+                cliente.setCpf(sc.nextLine());
+
+                System.out.println("> Informe o endereco: ");
+                cliente.setEndereco(sc.nextLine());
+
+                System.out.println("> Informe o telefone: ");
+                cliente.setTelefone(sc.nextLine());
+
+                try {
+                    System.out.println("> Informe a data de nascimento: ");
+                    String data = sc.nextLine();
+                    Date dt = new SimpleDateFormat("dd/MM/yyyy").parse(data);
+                    cliente.setDt_nascimento(dt);
+                } catch (ParseException e) {
+                    System.out.println(e.getMessage());
+                }
+
+                System.out.println("> Informe o codigo:");
+                cliente.setCodigo(sci.nextInt());
+            }
+        }
     }
 
     public void removeCliente(){
