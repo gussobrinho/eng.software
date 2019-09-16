@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Venda {
 
     private Date dt_venda;
-    private String codigo;
+    private int codigo;
     private float comissao_venda;
     private float valor_venda;
 
@@ -20,11 +20,11 @@ public class Venda {
         this.dt_venda = dt_venda;
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 

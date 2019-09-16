@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -78,7 +77,7 @@ public class Principal {
                 buscarFuncionario();
                 break;
             case 4:
-                System.out.println("Funcao em desenvolvimento!");
+                alterarFuncionario();
                 break;
             case 5:
                 removeFuncionario();
@@ -217,6 +216,49 @@ public class Principal {
 
     }
 
+    public void alterarFuncionario(){
+        Scanner sc = new Scanner(System.in);
+        Scanner sci = new Scanner(System.in);
+
+        System.out.println("# Alteracao de funcionario");
+
+        System.out.println("> Informe o codigo do funcionario: ");
+        int codFunc = sci.nextInt();
+
+        for(Funcionario funcionario: funcionarioList){
+
+            System.out.println("> Informe o nome: ");
+            funcionario.setNome(sc.nextLine());
+
+            System.out.println("> Informe o CPF: ");
+            funcionario.setCpf(sc.nextLine());
+
+            System.out.println("> Informe o endereco: ");
+            funcionario.setEndereco(sc.nextLine());
+
+            System.out.println("> Informe o telefone: ");
+            funcionario.setTelefone(sc.nextLine());
+
+            try {
+                System.out.println("> Informe a data de nascimento: ");
+                String data = sc.nextLine();
+                Date dt = new SimpleDateFormat("dd/MM/yyyy").parse(data);
+                funcionario.setDt_nascimento(dt);
+            } catch (ParseException e) {
+                System.out.println(e.getMessage());
+            }
+
+            System.out.println("> Informe o codigo: ");
+            funcionario.setCodigo(sci.nextInt());
+
+            System.out.println("> Informe o usuario: ");
+            funcionario.setUsuario(sc.nextLine());
+
+            System.out.println("> Informe a senha: ");
+            funcionario.setSenha(sc.nextLine());
+        }
+    }
+
     public void removeFuncionario(){
         Scanner sc = new Scanner(System.in);
 
@@ -257,6 +299,9 @@ public class Principal {
                 break;
             case 3:
                 buscarCliente();
+                break;
+            case 4:
+                alterarCliente();
                 break;
             case 5:
                 removeCliente();
@@ -339,6 +384,10 @@ public class Principal {
                 System.out.println("Cliente nao encontrado! Tente novamente.");
             }
         }
+    }
+
+    public void alterarCliente(){
+        System.out.println("# Alteracao de cliente");
     }
 
     public void removeCliente(){
@@ -532,6 +581,11 @@ public class Principal {
             case 1:
                 realizarVenda();
                 break;
+            case 2:
+                listarVendas();
+                break;
+            case 3:
+                cancelarVenda();
             case 0:
                 menuPrincipal();
                 break;
@@ -585,6 +639,18 @@ public class Principal {
                             }
 
                             if(achou3 == true){
+                                System.out.println("> Informe o codigo da venda:");
+                                venda.setCodigo(sc.nextInt());
+
+                                try {
+                                    System.out.print("> Informe a data da venda: ");
+                                    String data = sc.nextLine();
+                                    Date dt = new SimpleDateFormat("dd/MM/yyyy").parse(data);
+                                    venda.setDt_venda(dt);
+                                } catch (ParseException e) {
+                                    System.out.println(e.getMessage());
+                                }
+
                                 System.out.println("> Possui desconto sobre o valor do veiculo? (1- Sim 0- Nao)");
                                 int resposta = sc.nextInt();
 
@@ -594,12 +660,12 @@ public class Principal {
 
                                     venda.setValor_venda(au.getValor() - desconto);
 
-                                    System.out.println("-> Valor do veiculo vendido: " + au.getValor());
+                                    System.out.println("\n\n-> Valor do veiculo vendido: " + au.getValor());
                                     System.out.println("-> Valor do desconto: " + venda.getValor_venda());
                                     venda.setComissao_venda(venda.getValor_venda()*0.05f);
                                     System.out.println("-> Valor da comissao: " + venda.getComissao_venda());
                                 }else{
-                                    System.out.println("-> Valor do veiculo vendido: " + au.getValor());
+                                    System.out.println("\n\n-> Valor do veiculo vendido: " + au.getValor());
                                     venda.setComissao_venda(au.getValor()*0.05f);
                                     System.out.println("-> Valor da comissao: " + venda.getComissao_venda());
                                 }
@@ -617,5 +683,42 @@ public class Principal {
         }
 
         vendaList.add(venda);
+    }
+
+    public void listarVendas(){
+        System.out.println("# Lista de Vendas");
+
+        for (Venda v : vendaList) {
+            System.out.println("\n#-----------------------------------------------#");
+            System.out.println("| Data da venda: " + v.getDt_venda());
+            for (Automovel a: automovelList){
+                System.out.println("| Placa do automovel: " + a.getPlaca());
+            }
+            for (Cliente c : clienteList) {
+                System.out.println("| Codigo do cliente: " + c.getCodigo());
+            }
+            for (Funcionario f : funcionarioList) {
+                System.out.println("| Codigo do funcionario: " + f.getCodigo());
+            }
+            System.out.println("| Valor de venda: " + v.getValor_venda());
+            System.out.println("#-----------------------------------------------#");
+        }
+    }
+
+    public void cancelarVenda(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("> Informe o codigo da venda:");
+        int bscVenda = sc.nextInt();
+
+        List<Venda> cancelaVenda = new ArrayList<>();
+
+        for(Venda v: vendaList){
+            if(bscVenda == v.getCodigo()){
+                cancelaVenda.add(v);
+            }
+        }
+
+        vendaList.removeAll(cancelaVenda);
     }
 }
