@@ -470,7 +470,7 @@ public class Principal {
                 buscarAutomovel();
                 break;
             case 4:
-                System.out.println("Funcao em desenvolvimento!");
+                alterarAutomovel();
                 break;
             case 5:
                 removeAutomovel();
@@ -573,6 +573,61 @@ public class Principal {
                 System.out.println("------------------------------");
             }else{
                 System.out.println("Placa nao encontrada! Tente novamente.");
+            }
+        }
+    }
+
+    public void alterarAutomovel(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("# Alteracao de automovel");
+
+        System.out.println("Informe a placa do automovel:");
+        String placaAuto = sc.nextLine();
+
+        for(Automovel automovel: automovelList){
+            if(placaAuto.equals(automovel.getPlaca())){
+                System.out.println("> Informe o modelo: ");
+                automovel.setNome_modelo(sc.nextLine());
+
+                System.out.println("> Informe a marca: ");
+                automovel.setNome_marca(sc.nextLine());
+
+                System.out.println("> Informe o tipo (Carro ou Moto): ");
+                automovel.setTipo(sc.nextLine());
+
+                try {
+                    System.out.println("> Informe o ano de fabricação: ");
+                    String data = sc.nextLine();
+                    Date dt = new SimpleDateFormat("yyyy").parse(data);
+                    automovel.setAno_fab(dt);
+                } catch (ParseException e) {
+                    System.out.println(e.getMessage());
+                }
+
+                try {
+                    System.out.println("> Informe o ano do modelo: ");
+                    String data = sc.nextLine();
+                    Date dt = new SimpleDateFormat("yyyy").parse(data);
+                    automovel.setAno_modelo(dt);
+                } catch (ParseException e) {
+                    System.out.println(e.getMessage());
+                }
+
+                System.out.println("> Informe a cor: ");
+                automovel.setCor(sc.nextLine());
+
+                System.out.println("> Informe o chassi: ");
+                automovel.setChassi(sc.nextLine());
+
+                System.out.println("> Informe a placa: ");
+                automovel.setPlaca(sc.nextLine());
+
+                System.out.println("> Informe a quillometragem: ");
+                automovel.setKm(sc.nextFloat());
+
+                System.out.println("> Informe o valor: ");
+                automovel.setValor(sc.nextFloat());
             }
         }
     }
