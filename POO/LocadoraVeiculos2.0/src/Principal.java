@@ -1,10 +1,7 @@
 import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Principal {
 
@@ -551,7 +548,9 @@ public class Principal {
     public void realizarVenda(){
         Venda venda = new Venda();
 
-        boolean ac = false;
+        boolean achou = false;
+        boolean achou2 = false;
+        boolean achou3 = false;
 
         Scanner sc = new Scanner(System.in);
         System.out.println("> Informe a placa do automovel: ");
@@ -559,18 +558,52 @@ public class Principal {
 
         for(Automovel au: automovelList){
             if(bscPlaca.equals(au.getPlaca())){
-                ac = true;
+                System.out.println("-> Veiculo escolhido:");
+                System.out.println("Placa: " + au.getPlaca());
+                achou = true;
+            }
+
+            if(achou == true){
+                System.out.println("> Informe o codigo do cliente:");
+                int codCliente = sc.nextInt();
+
+                for(Cliente cl: clienteList){
+                    if(codCliente == cl.getCodigo()){
+                        System.out.println("-> Cliente escolhido:");
+                        System.out.println("Codigo: " + cl.getCodigo());
+                        achou2 = true;
+                    }
+
+                    if(achou2 == true){
+                        System.out.println("> Informe o codigo do funcionario: ");
+                        int codFunc = sc.nextInt();
+
+                        for(Funcionario fu: funcionarioList){
+                            if(codFunc == fu.getCodigo()){
+                                System.out.println("-> Funcionario escolhido:");
+                                System.out.println("Codigo: " + fu.getCodigo());
+                                achou3 = true;
+                            }
+
+                            if(achou3 == true){
+                                finalizarVenda();
+                            }
+                        }
+                        break;
+                    }
+                }
                 break;
             }
         }
-
-        if(ac == true){
-            System.out.println("Achei!");
-        }else{
+        if(!achou || !achou2 || !achou3){
             System.out.println("Tente Novamente!");
             menuVendas();
         }
 
         vendaList.add(venda);
+    }
+
+    public void finalizarVenda(){
+        System.out.println("Vamos finalizar a venda!");
     }
 }
