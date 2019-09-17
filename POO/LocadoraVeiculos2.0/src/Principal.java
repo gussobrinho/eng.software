@@ -391,12 +391,17 @@ public class Principal {
     public void buscarCliente(){
         Scanner sc = new Scanner(System.in);
 
+        boolean achou = false;
+
         System.out.println("#!# Busca de Cliente #!#");
         System.out.println("> Informe o nome do cliente: ");
         String bscCliente = sc.nextLine();
 
         for(Cliente c: clienteList){
             if(c.getNome().equals(bscCliente)){
+
+                achou = true;
+
                 System.out.println("\n#-----------------------------------------------#");
                 System.out.println("| Nome: " + c.getNome());
                 System.out.println("| CPF: " + c.getCpf());
@@ -405,9 +410,11 @@ public class Principal {
                 System.out.println("| Data de Nascimento: " + c.getDt_nascimento());
                 System.out.println("| Codigo: " + c.getCodigo());
                 System.out.println("#-----------------------------------------------#");
-            }else{
-                System.out.println("Cliente nao encontrado! Tente novamente.");
             }
+        }
+        if(!achou){
+            System.out.println("Cliente nao encontrado! Tente novamente.");
+            menuCliente();
         }
     }
 
@@ -451,19 +458,24 @@ public class Principal {
     public void removeCliente(){
         Scanner sc = new Scanner(System.in);
 
+        boolean achou = false;
+
         System.out.println("# Exclusão de Cliente");
         System.out.println("> Informe o codigo do cliente:");
-        int codFunc = sc.nextInt();
+        int codCliente = sc.nextInt();
 
         List<Cliente> removeCliente = new ArrayList<>();
 
         for(Cliente c: clienteList){
-            if(c.getCodigo() == codFunc){
+            if(c.getCodigo() == codCliente){
+                achou = true;
                 removeCliente.add(c);
             }
-            else{
-                System.out.println("Cliente nao encontrado! Tente novamente.");
-            }
+        }
+
+        if(!achou){
+            System.out.println("Cliente nao encontrado! Tente novamente.");
+            menuCliente();
         }
 
         clienteList.removeAll(removeCliente);
@@ -577,27 +589,34 @@ public class Principal {
     public void buscarAutomovel(){
         Scanner sc = new Scanner(System.in);
 
+        boolean achou = false;
+
         System.out.println("# Busca de automovel");
         System.out.println("> Informe a placa do automovel:");
         String bscPlaca = sc.nextLine();
 
         for(Automovel au: automovelList){
             if(au.getPlaca().equals(bscPlaca)){
-                System.out.println("\n------------------------------");
-                System.out.println("Modelo: " + au.getNome_modelo());
-                System.out.println("Marca: " + au.getNome_marca());
-                System.out.println("Placa: " + au.getPlaca());
-                System.out.println("Valor: R$" + au.getValor());
-                System.out.println("Quilometragem: " + au.getKm() + "KM");
-                System.out.println("Chassi: " + au.getChassi());
-                System.out.println("Cor: " + au.getCor());
-                System.out.println("Tipo: " + au.getTipo());
-                System.out.println("Ano de Fabricação: " + au.getAno_fab());
-                System.out.println("Ano do Modelo: " + au.getAno_modelo());
-                System.out.println("------------------------------");
-            }else{
-                System.out.println("Placa nao encontrada! Tente novamente.");
+
+                achou = true;
+
+                System.out.println("#-----------------------------------------------#");
+                System.out.println("| Modelo: " + au.getNome_modelo());
+                System.out.println("| Marca: " + au.getNome_marca());
+                System.out.println("| Placa: " + au.getPlaca());
+                System.out.println("| Valor: R$" + au.getValor());
+                System.out.println("| Quilometragem: " + au.getKm() + "KM");
+                System.out.println("| Chassi: " + au.getChassi());
+                System.out.println("| Cor: " + au.getCor());
+                System.out.println("| Tipo: " + au.getTipo());
+                System.out.println("| Ano de Fabricação: " + au.getAno_fab());
+                System.out.println("| Ano do Modelo: " + au.getAno_modelo());
+                System.out.println("#-----------------------------------------------#");
             }
+        }
+        if(!achou){
+            System.out.println("Veiculo nao encontrado! Tente novamente.");
+            menuAutomovel();
         }
     }
 
@@ -606,7 +625,7 @@ public class Principal {
 
         System.out.println("# Alteracao de automovel");
 
-        System.out.println("Informe a placa do automovel:");
+        System.out.println("> Informe a placa do automovel:");
         String placaAuto = sc.nextLine();
 
         for(Automovel automovel: automovelList){
@@ -659,6 +678,8 @@ public class Principal {
     public void removeAutomovel(){
         Scanner sc = new Scanner(System.in);
 
+        boolean achou = false;
+
         System.out.println("# Exclusão de Automovel");
         System.out.println("> Informe a placa do automovel:");
         String bscPlaca = sc.nextLine();
@@ -667,12 +688,14 @@ public class Principal {
 
         for(Automovel au:automovelList){
             if(au.getPlaca().equals(bscPlaca)){
+                achou = true;
                 removeAutomovel.add(au);
             }
-            else{
-                System.out.println("Automovel nao encontrado! Tente novamente.");
-                break;
-            }
+        }
+
+        if(!achou){
+            System.out.println("Veiculo nao encontrado! Tente novamente.");
+            menuAutomovel();
         }
 
         automovelList.removeAll(removeAutomovel);
@@ -685,7 +708,7 @@ public class Principal {
         System.out.println("#!# Menu de Vendas #!#");
         System.out.println("1 - Realizar venda");
         System.out.println("2 - Listar vendas");
-        System.out.println("5 - Cancelar venda");
+        System.out.println("3 - Cancelar venda");
         System.out.println("0 - Voltar");
         System.out.println("Digite sua opção: ");
         int op = sc.nextInt();
@@ -699,12 +722,13 @@ public class Principal {
                 break;
             case 3:
                 cancelarVenda();
+                break;
             case 0:
                 menuPrincipal();
                 break;
             default:
                 System.out.println("Opcao invalida, tente novamente!");
-                menuPrincipal();
+                menuVendas();
                 break;
         }
 
@@ -719,6 +743,8 @@ public class Principal {
         boolean achou3 = false;
 
         Scanner sc = new Scanner(System.in);
+        Scanner sci = new Scanner(System.in);
+
         System.out.println("> Informe a placa do automovel: ");
         String bscPlaca = sc.nextLine();
 
@@ -731,7 +757,7 @@ public class Principal {
 
             if(achou == true){
                 System.out.println("> Informe o codigo do cliente:");
-                int codCliente = sc.nextInt();
+                int codCliente = sci.nextInt();
 
                 for(Cliente cl: clienteList){
                     if(codCliente == cl.getCodigo()){
@@ -742,7 +768,7 @@ public class Principal {
 
                     if(achou2 == true){
                         System.out.println("> Informe o codigo do funcionario: ");
-                        int codFunc = sc.nextInt();
+                        int codFunc = sci.nextInt();
 
                         for(Funcionario fu: funcionarioList){
                             if(codFunc == fu.getCodigo()){
@@ -753,10 +779,10 @@ public class Principal {
 
                             if(achou3 == true){
                                 System.out.println("> Informe o codigo da venda:");
-                                venda.setCodigo(sc.nextInt());
+                                venda.setCodigo(sci.nextInt());
 
                                 try {
-                                    System.out.print("> Informe a data da venda: ");
+                                    System.out.println("> Informe a data da venda: ");
                                     String data = sc.nextLine();
                                     Date dt = new SimpleDateFormat("dd/MM/yyyy").parse(data);
                                     venda.setDt_venda(dt);
@@ -765,7 +791,7 @@ public class Principal {
                                 }
 
                                 System.out.println("> Possui desconto sobre o valor do veiculo? (1- Sim 0- Nao)");
-                                int resposta = sc.nextInt();
+                                int resposta = sci.nextInt();
 
                                 if(resposta == 1){
                                     System.out.println("> Informe o valor do desconto: ");
@@ -773,12 +799,13 @@ public class Principal {
 
                                     venda.setValor_venda(au.getValor() - desconto);
 
-                                    System.out.println("\n\n-> Valor do veiculo vendido: " + au.getValor());
-                                    System.out.println("-> Valor do desconto: " + venda.getValor_venda());
+                                    System.out.println("-> Valor do veiculo vendido: " + au.getValor());
+                                    System.out.println("-> Valor do desconto: " + desconto);
                                     venda.setComissao_venda(venda.getValor_venda()*0.05f);
                                     System.out.println("-> Valor da comissao: " + venda.getComissao_venda());
                                 }else{
-                                    System.out.println("\n\n-> Valor do veiculo vendido: " + au.getValor());
+                                    System.out.println("-> Valor do veiculo vendido: " + au.getValor());
+                                    venda.setValor_venda(au.getValor());
                                     venda.setComissao_venda(au.getValor()*0.05f);
                                     System.out.println("-> Valor da comissao: " + venda.getComissao_venda());
                                 }
@@ -791,7 +818,7 @@ public class Principal {
             }
         }
         if(!achou || !achou2 || !achou3){
-            System.out.println("Tente Novamente!");
+            System.out.println("Tente Novamente! O veiculo e/ou funcionario/cliente nao foram localizados.");
             menuVendas();
         }
 
@@ -803,6 +830,7 @@ public class Principal {
 
         for (Venda v : vendaList) {
             System.out.println("\n#-----------------------------------------------#");
+            System.out.println("| Codigo: " + v.getCodigo());
             System.out.println("| Data da venda: " + v.getDt_venda());
             for (Automovel a: automovelList){
                 System.out.println("| Placa do automovel: " + a.getPlaca());
@@ -821,6 +849,8 @@ public class Principal {
     public void cancelarVenda(){
         Scanner sc = new Scanner(System.in);
 
+        boolean achou = false;
+
         System.out.println("> Informe o codigo da venda:");
         int bscVenda = sc.nextInt();
 
@@ -828,8 +858,14 @@ public class Principal {
 
         for(Venda v: vendaList){
             if(bscVenda == v.getCodigo()){
+                achou = true;
                 cancelaVenda.add(v);
             }
+        }
+
+        if(!achou){
+            System.out.println("Venda nao localizada! Tente novamente.");
+            menuVendas();
         }
 
         vendaList.removeAll(cancelaVenda);
