@@ -1,3 +1,5 @@
+import com.sun.deploy.panel.AbstractRadioPropertyGroup;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -8,6 +10,8 @@ public class Principal {
     ArrayList<Cliente> clienteList = new ArrayList<>();
     ArrayList<Automovel> automovelList = new ArrayList<>();
     ArrayList<Venda> vendaList = new ArrayList<>();
+    ArrayList<Gerente> gerenteList = new ArrayList<>();
+    ArrayList<Badeco> badecoList = new ArrayList<>();
 
     public static void main(String args[]){
         System.out.println("#!!# Garagem Tabajara #!!#");
@@ -154,6 +158,8 @@ public class Principal {
                 System.out.println("> Informe o salario: ");
                 gerente.setSalario(sci.nextFloat());
 
+                gerenteList.add(gerente);
+
                 funcionario = gerente;
             }else if(tipoFunc == 2){
                 Badeco badeco = new Badeco();
@@ -165,6 +171,8 @@ public class Principal {
 
                 System.out.println("> Informe o salario: ");
                 badeco.setSalario(sci.nextFloat());
+
+                badecoList.add(badeco);
 
                 funcionario = badeco;
             }else {
@@ -192,12 +200,15 @@ public class Principal {
 
         Scanner sc = new Scanner(System.in);
 
+        boolean achou = false;
+
         System.out.println("# Busca de Funcionários");
         System.out.println(">Informe o codigo do funcionario:");
         int codFunc = sc.nextInt();
 
         for(Funcionario f: funcionarioList){
             if (f.getCodigo() == codFunc){
+                achou = true;
                 System.out.println("\n#-----------------------------------------------#");
                 System.out.println("| Nome: " + f.getNome());
                 System.out.println("| CPF: " + f.getCpf());
@@ -208,12 +219,25 @@ public class Principal {
                 System.out.println("| Usuario: " + f.getUsuario());
                 System.out.println("| Senha: " + f.getSenha());
                 System.out.println("| Salario: " + f.calculaSalario());
+                if(f.calculaSalario() >= f.getSalario()*1.5f){
+                    System.out.println("| ~ # Este Funcionario e um gerente");
+                    for(Gerente g: gerenteList){
+                        System.out.println("| Matricula: " + g.getMatricula());
+                        System.out.println("| Departamento: " + g.getDepartamento());
+                    }
+                }else if(f.calculaSalario() <= f.getSalario()*0.8f){
+                    System.out.println("| ~ # Este Funcionario e um badeco");
+                    for(Badeco b: badecoList){
+                        System.out.println("| Funcao: " + b.getFuncao());
+                    }
+                }
                 System.out.println("#-----------------------------------------------#");
-            }else{
-                System.out.println("Funcionario nao encontrado! Tente novamente.");
             }
         }
-
+        if(achou == false){
+            System.out.println("Funcionario nao encontrado! Tente Novamente.");
+            menuFuncionario();
+        }
     }
 
     public void alterarFuncionario(){
