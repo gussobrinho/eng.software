@@ -39,7 +39,8 @@ public class ClientManager extends Thread {
             // Recebe todas as mensagens enviadas pelo cliente
             while(true){
                 msg = leitor.readLine();
-                if(msg.equalsIgnoreCase(":: SAIR")){
+                if(msg.equalsIgnoreCase("::sair")){
+                    clientList.remove(this.nomeCliente, this);
                     this.cliente.close();
                 }else if(msg.toLowerCase().startsWith("::msg")){
                     String nomeDestinatario = msg.substring(5, msg.length());
@@ -51,7 +52,7 @@ public class ClientManager extends Thread {
                         escritor.println("Digite uma mensagem para: " + destinatario.getNomeCliente());
                         destinatario.getEscritor().println(this.nomeCliente + " disse: " + leitor.readLine());
                     }
-                }if(msg.equalsIgnoreCase("::list")){
+                }else if(msg.equalsIgnoreCase("::list")){
                     StringBuffer stringBuffer = new StringBuffer();
                     for(String cm: clientList.keySet()){
                         stringBuffer.append(cm);
@@ -65,7 +66,7 @@ public class ClientManager extends Thread {
             }
 
         } catch (IOException e) {
-            System.err.println("\nO cliente fechou a conexao.\n\n");
+            System.err.println("\nO cliente " + this.nomeCliente + " fechou a conexao.\n\n");
             e.printStackTrace();
         }
     }

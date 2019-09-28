@@ -25,6 +25,9 @@ public class SocketClient extends Thread{
                         System.out.println("\tComandos Base\n#-------------------#\n::sair -> Sai do Chat\n::msgNomeCliente -> Manda uma Mensagem Direta\n::list -> lista todos os clientes\n#-------------------#");
                         while(true){
                             String mensagem = leitor.readLine();
+                            if(mensagem == null || mensagem.isEmpty()){
+                                continue;
+                            }
                             System.out.println("O servidor disse: " + mensagem);
                         }
                     } catch (IOException e) {
@@ -45,6 +48,9 @@ public class SocketClient extends Thread{
             **/
             while(true){
                 String msgTerminal = leitorTerminal.readLine();
+                if(msgTerminal == null || msgTerminal.length() == 0 ){
+                    continue;
+                }
                 escritor.println(msgTerminal);
                 if(msgTerminal.equalsIgnoreCase("::SAIR")){
                     System.exit(0);
