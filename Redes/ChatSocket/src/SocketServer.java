@@ -24,7 +24,7 @@ public class SocketServer {
                 if(servidor != null)
                     servidor.close();
             } catch (IOException ex) {}
-            System.err.println("\nA porta " + port + " ja esta ocupada ou o servidor foi fechado!\n\n");
+            System.err.println("\nA porta " + port + " ja esta ocupada ou o servidor nao foi fechado!\n\n");
             e.printStackTrace();
         }
     }

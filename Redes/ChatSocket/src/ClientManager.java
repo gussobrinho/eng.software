@@ -66,6 +66,7 @@ public class ClientManager extends Thread {
             }
 
         } catch (IOException e) {
+            clientList.remove(this.nomeCliente, this);
             System.err.println("\nO cliente " + this.nomeCliente + " fechou a conexao.\n\n");
             e.printStackTrace();
         }

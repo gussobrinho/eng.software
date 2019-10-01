@@ -26,9 +26,12 @@ public class SocketClient extends Thread{
                         while(true){
                             String mensagem = leitor.readLine();
                             if(mensagem == null || mensagem.isEmpty()){
+                                System.out.print("> ");
                                 continue;
                             }
-                            System.out.println("O servidor disse: " + mensagem);
+                            //System.out.println("O servidor disse: " + mensagem);
+                            System.out.print("[S]: " + mensagem + "\n> ");
+                            //System.out.print("> ");
                         }
                     } catch (IOException e) {
                         System.out.println("Nao foi possivel ler a mensagem do servidor");
@@ -47,8 +50,10 @@ public class SocketClient extends Thread{
             * Mandando mensagem pro servidor
             **/
             while(true){
+                System.out.print("> ");
                 String msgTerminal = leitorTerminal.readLine();
                 if(msgTerminal == null || msgTerminal.length() == 0 ){
+                    System.out.print("> ");
                     continue;
                 }
                 escritor.println(msgTerminal);
