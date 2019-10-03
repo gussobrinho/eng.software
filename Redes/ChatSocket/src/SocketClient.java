@@ -7,15 +7,22 @@ import java.net.UnknownHostException;
 
 public class SocketClient extends Thread{
 
+    private static String ip_address = "127.0.0.1";
     static SocketServer ss = new SocketServer();
 
     public static void main(String[] args) {
         try {
-            final Socket cliente = new Socket("127.0.0.1", ss.port);
+            /*
+            Final serve pra definir os valores como constante ("versao final")
+             */
+            final Socket cliente = new Socket(ip_address, ss.port);
 
+            /*
+            Thread necessaria pra escerver e receber as mensagens ao mesmo tempo
+             */
             new Thread(){
                 /*
-                 * Lendo o que o servidor esta mandando
+                 * Lendo/Mostrando o que o servidor esta mandando
                  **/
                 @Override
                 public void run() {
@@ -26,12 +33,9 @@ public class SocketClient extends Thread{
                         while(true){
                             String mensagem = leitor.readLine();
                             if(mensagem == null || mensagem.isEmpty()){
-                                System.out.print("> ");
                                 continue;
                             }
-                            //System.out.println("O servidor disse: " + mensagem);
                             System.out.print("[S]: " + mensagem + "\n> ");
-                            //System.out.print("> ");
                         }
                     } catch (IOException e) {
                         System.out.println("Nao foi possivel ler a mensagem do servidor");
@@ -53,7 +57,6 @@ public class SocketClient extends Thread{
                 System.out.print("> ");
                 String msgTerminal = leitorTerminal.readLine();
                 if(msgTerminal == null || msgTerminal.length() == 0 ){
-                    System.out.print("> ");
                     continue;
                 }
                 escritor.println(msgTerminal);
